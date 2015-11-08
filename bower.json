@@ -1,0 +1,21 @@
+{
+  "name": "kata-one",
+  "description": "First TODO Attempt",
+  "main": "server.js",
+  "authors": [
+    "David Tsai <David@whataniceguy.com>"
+  ],
+  "license": "ISC",
+  "moduleType": [],
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "~3.3.5"
+  }
+}
