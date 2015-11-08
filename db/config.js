@@ -1,19 +1,23 @@
 var path = require('path');
-// requiring postgres database here and passing in connection options (knex)
-var pg = require('knex')({
+
+var knex = require('knex')({
   client: 'pg',
-  connection: process.env.PG_CONNECTION_STRING,
-  searchPath: 'knex,public'
+  connection: {
+    host: '127.0.0.1',
+    user: 'admin',
+    password: 'admin',
+    database: 'kataone',
+    charset: 'utf8'
+  }
 });
-// setting database to the variable db
+
 var db = require('bookshelf')(knex);
 
 db.knex.schema.hasTable('items').then(function(exists) {
   if (!exists) {
-    db.knex.schema.createTable('urls', function (link) {
+    db.knex.schema.createTable('items', function (link) {
       link.increments('id').primary();
       link.string('text', 255);
-      link.integer('visits');
       link.timestamps();
     }).then(function (table) {
       console.log('Created Items Table', table);
