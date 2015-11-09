@@ -1,10 +1,18 @@
 var express = require('express');
 var app = express();
-var knex = require('knex');
+var fs = require('fs');
+
+// Bookshelf + Knex + Postgres DB
 var db = require('./db/config.js')
+var Item = require('./client/models/item');
+var Items = require('./client/collections/items');
 
 app.get('/', function(req, res){
+  var test = Items.get({});
+  console.log(test);
   res.send('hello world');
 });
 
-app.listen(3000);
+console.log('KATA-ONE: server.js is listening on 3000.');
+
+app.listen(process.env.PORT || 3000);
