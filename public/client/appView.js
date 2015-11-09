@@ -1,9 +1,9 @@
 window.TodoApp = Backbone.View.extend({
+  template: Templates['home'],
+
   initialize: function() {
     console.log('TodoApp is now running, from Backbone.View!');
     $('body').append(this.render().el);
-
-    this.router = new 
   },
 
   render: function() {
@@ -13,6 +13,6 @@ window.TodoApp = Backbone.View.extend({
 
   renderIndexView: function(e) {
     e && e.preventDefault();
-    this.router.navigate('/', { trigger: true });
+    // this.router.navigate('/', { trigger: true });
   }
 });
