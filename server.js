@@ -1,6 +1,7 @@
 var express = require('express');
 var fs = require('fs');
-var exphbs  = require('express-handlebars');
+var bodyParser = require('body-parser');
+var Promise = require('bluebird');
 
 // Bookshelf + Knex + Postgres DB
 var db = require('./app/config.js')
@@ -9,18 +10,37 @@ var Items = require('./app/collections/items');
 
 // Express
 var app = express();
+var exphbs  = require('express-handlebars');
 
+// Handlebars
+var hbs = exphbs.create({
+  // specify helpers which are only registered on this instance
+  helpers: {
+    foo: function () { return 'FOO!'; },
+    bar: function () { return 'BAR!'; }
+  }
+});
 
-app.set('views', __dirname + '/views');
+app.engine('handlebars', hbs.engine);
+// app.set('views', __dirname + '/views');
+app.set('view engine', 'handlebars');
 
-app.set('view engine', exphbs);
+// app.use(express.static(__dirname + '/public'));
 
-app.use(express.static(__dirname + '/public'));
+var retrieveData = function() {
+  var result;
+  new Item({})
+    .fetchAll()
+    .then(function(items) {
+      result = JSON.stringify(items);
+    });
+  return result;
+};
 
 app.get('/', function(req, res){
-  var test = Items.get({});
+  var test = retrieveData();
   console.log(test);
-  res.render('');
+  res.render('home');
 });
 
 console.log('KATA-ONE: server.js is listening on 3000.');

@@ -1,5 +1,4 @@
 // Represents 'item' row in our db
-
 var db = require('../../app/config');
 
 var Item = db.Model.extend({
