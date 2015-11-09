@@ -1,4 +1,4 @@
-// config file contains table schemas and inits pg db
+// config file contains table schemas and inits postgres db
 
 var path = require('path');
 
