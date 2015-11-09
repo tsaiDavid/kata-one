@@ -1,4 +1,6 @@
-var db = require('../../db/config');
+// Represents 'items' Table in our db
+
+var db = require('../../app/config');
 var Item = require('../models/item');
 
 var Items = new db.Collection();

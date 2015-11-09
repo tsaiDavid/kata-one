@@ -2,11 +2,11 @@ var express = require('express');
 var fs = require('fs');
 
 // Bookshelf + Knex + Postgres DB
-var db = require('./db/config.js')
-var Item = require('./client/models/item');
-var Items = require('./client/collections/items');
+var db = require('./app/config.js')
+var Item = require('./app/models/item');
+var Items = require('./app/collections/items');
 
-// Express 
+// Express
 var app = express();
 
 app.get('/', function(req, res){

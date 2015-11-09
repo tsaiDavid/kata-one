@@ -1,4 +1,6 @@
-var db = require('../../db/config');
+// Represents 'item' row in our db
+
+var db = require('../../app/config');
 
 var Item = db.Model.extend({
   tableName: 'items',

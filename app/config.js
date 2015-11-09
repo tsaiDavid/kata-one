@@ -1,3 +1,5 @@
+// config file contains table schemas and inits pg db
+
 var path = require('path');
 
 var knex = require('knex')({
