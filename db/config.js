@@ -26,33 +26,4 @@ db.knex.schema.hasTable('items').then(function(exists) {
   }
 });
 
-// db.knex.schema.hasTable('clicks').then(function(exists) {
-//   if (!exists) {
-//     db.knex.schema.createTable('clicks', function (click) {
-//       click.increments('id').primary();
-//       click.integer('link_id');
-//       click.timestamps();
-//     }).then(function (table) {
-//       console.log('Created Clicks Table', table);
-//     });
-//   }
-// });
-
-/************************************************************/
-// Add additional schema definitions below
-/************************************************************/
-
-// db.knex.schema.hasTable('users').then(function(exists) {
-//   if (!exists) {
-//     db.knex.schema.createTable('users', function (user) {
-//       user.increments('id').primary();
-//       user.string('username', 255).unique();
-//       user.string('password', 255);
-//       user.timestamps();
-//     }).then(function (table) {
-//       console.log('Created Users Table', table);
-//     });
-//   }
-// })
-
 module.exports = db;
