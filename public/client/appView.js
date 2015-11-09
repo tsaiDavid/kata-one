@@ -1,5 +1,9 @@
 window.TodoApp = Backbone.View.extend({
-  template: Templates['home'],
+  template: _.template('<h1>fuck</h1>');
+
+  events: {
+
+  },
 
   initialize: function() {
     console.log('TodoApp is now running, from Backbone.View!');
@@ -7,7 +11,7 @@ window.TodoApp = Backbone.View.extend({
   },
 
   render: function() {
-    this.el$html( this.template() );
+    this.$el.html( this.template() );
     return this;
   },
 

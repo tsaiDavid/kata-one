@@ -15,10 +15,17 @@ var exphbs  = require('express-handlebars');
 // Handlebars
 var hbs = exphbs.create({
   // specify helpers which are only registered on this instance
-  // helpers: {
-  //   foo: function () { return 'FOO!'; },
-  //   bar: function () { return 'BAR!'; }
-  // }
+  helpers: {
+    renderAll: function () {
+      var result = [];
+      new Item({}).fetchAll().then(function(item) {
+        item.forEach(function(model) {
+          result.push(model.attributes.text.toJSON());
+        })
+      });
+      return result;
+    }
+  }
 });
 
 app.use(bodyParser());
@@ -27,7 +34,11 @@ app.engine('handlebars', hbs.engine);
 app.set('view engine', 'handlebars');
 app.use(express.static(__dirname + '/public'));
 
-app.get('/', function(req, res){
+app.post('/', function(req, res) {
+  console.log(req.body);
+});
+
+app.get('/', function(req, res) {
   var result;
   new Item({}).fetchAll().then(function(item) {
     item.forEach(function(model) {
